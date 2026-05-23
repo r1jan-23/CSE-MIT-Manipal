@@ -1,0 +1,73 @@
+$date
+	Sat May 23 01:11:25 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module bcd_adder_tb $end
+$var wire 4 ! sum [3:0] $end
+$var wire 1 " carry $end
+$var reg 4 # a [3:0] $end
+$var reg 4 $ b [3:0] $end
+$var reg 1 % cin $end
+$scope module ba $end
+$var wire 4 & a [3:0] $end
+$var wire 4 ' b [3:0] $end
+$var wire 1 % cin $end
+$var wire 5 ( temp_sum [4:0] $end
+$var wire 4 ) sum [3:0] $end
+$var wire 5 * corrected_sum [4:0] $end
+$var wire 1 " carry $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+b111 *
+b111 )
+b111 (
+b11 '
+b100 &
+0%
+b11 $
+b100 #
+0"
+b111 !
+$end
+#10000
+b10 !
+b10 )
+1"
+b10010 *
+b111 $
+b111 '
+b1100 (
+b101 #
+b101 &
+#20000
+b111 !
+b111 )
+b10111 *
+b1000 $
+b1000 '
+b10001 (
+b1001 #
+b1001 &
+#30000
+b1001 !
+b1001 )
+0"
+b1001 *
+1%
+b110 $
+b110 '
+b1001 (
+b10 #
+b10 &
+#40000

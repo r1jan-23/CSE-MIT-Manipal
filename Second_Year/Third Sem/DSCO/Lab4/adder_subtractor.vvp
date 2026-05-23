@@ -1,0 +1,90 @@
+#! /usr/bin/vvp
+:ivl_version "12.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x563266bde6a0 .scope module, "adder_subtractor_tb" "adder_subtractor_tb" 2 3;
+ .timescale -9 -12;
+v0x563266bf60e0_0 .var "a", 3 0;
+v0x563266bf61c0_0 .var "b", 3 0;
+v0x563266bf6290_0 .net "carry", 0 0, L_0x563266bf66c0;  1 drivers
+v0x563266bf6390_0 .var "mode", 0 0;
+v0x563266bf6460_0 .net "result", 3 0, L_0x563266bf67b0;  1 drivers
+S_0x563266bde830 .scope module, "as" "adder_subtractor" 2 10, 3 1 0, S_0x563266bde6a0;
+ .timescale -9 -12;
+    .port_info 0 /INPUT 4 "a";
+    .port_info 1 /INPUT 4 "b";
+    .port_info 2 /INPUT 1 "mode";
+    .port_info 3 /OUTPUT 4 "result";
+    .port_info 4 /OUTPUT 1 "carry";
+L_0x563266bcc9b0 .functor NOT 4, v0x563266bf61c0_0, C4<0000>, C4<0000>, C4<0000>;
+v0x563266ba4170_0 .net *"_ivl_0", 3 0, L_0x563266bcc9b0;  1 drivers
+L_0x7f76eb8d1018 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0x563266bf5410_0 .net *"_ivl_10", 0 0, L_0x7f76eb8d1018;  1 drivers
+v0x563266bf54f0_0 .net *"_ivl_11", 4 0, L_0x563266bf6a60;  1 drivers
+L_0x7f76eb8d1060 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0x563266bf55b0_0 .net *"_ivl_14", 0 0, L_0x7f76eb8d1060;  1 drivers
+v0x563266bf5690_0 .net *"_ivl_15", 4 0, L_0x563266bf6ba0;  1 drivers
+v0x563266bf57c0_0 .net *"_ivl_17", 4 0, L_0x563266bf6d90;  1 drivers
+L_0x7f76eb8d10a8 .functor BUFT 1, C4<0000>, C4<0>, C4<0>, C4<0>;
+v0x563266bf58a0_0 .net *"_ivl_20", 3 0, L_0x7f76eb8d10a8;  1 drivers
+v0x563266bf5980_0 .net *"_ivl_21", 4 0, L_0x563266bf6e80;  1 drivers
+v0x563266bf5a60_0 .net *"_ivl_7", 4 0, L_0x563266bf68f0;  1 drivers
+v0x563266bf5b40_0 .net "a", 3 0, v0x563266bf60e0_0;  1 drivers
+v0x563266bf5c20_0 .net "b", 3 0, v0x563266bf61c0_0;  1 drivers
+v0x563266bf5d00_0 .net "b_comp", 3 0, L_0x563266bf6580;  1 drivers
+v0x563266bf5de0_0 .net "carry", 0 0, L_0x563266bf66c0;  alias, 1 drivers
+v0x563266bf5ea0_0 .net "mode", 0 0, v0x563266bf6390_0;  1 drivers
+v0x563266bf5f60_0 .net "result", 3 0, L_0x563266bf67b0;  alias, 1 drivers
+L_0x563266bf6580 .functor MUXZ 4, v0x563266bf61c0_0, L_0x563266bcc9b0, v0x563266bf6390_0, C4<>;
+L_0x563266bf66c0 .part L_0x563266bf6e80, 4, 1;
+L_0x563266bf67b0 .part L_0x563266bf6e80, 0, 4;
+L_0x563266bf68f0 .concat [ 4 1 0 0], v0x563266bf60e0_0, L_0x7f76eb8d1018;
+L_0x563266bf6a60 .concat [ 4 1 0 0], L_0x563266bf6580, L_0x7f76eb8d1060;
+L_0x563266bf6ba0 .arith/sum 5, L_0x563266bf68f0, L_0x563266bf6a60;
+L_0x563266bf6d90 .concat [ 1 4 0 0], v0x563266bf6390_0, L_0x7f76eb8d10a8;
+L_0x563266bf6e80 .arith/sum 5, L_0x563266bf6ba0, L_0x563266bf6d90;
+    .scope S_0x563266bde6a0;
+T_0 ;
+    %vpi_call 2 19 "$dumpfile", "adder_subtractor.vcd" {0 0 0};
+    %vpi_call 2 20 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x563266bde6a0 {0 0 0};
+    %vpi_call 2 21 "$display", "Mode A     B     | Carry Result" {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x563266bf6390_0, 0, 1;
+    %pushi/vec4 5, 0, 4;
+    %store/vec4 v0x563266bf60e0_0, 0, 4;
+    %pushi/vec4 3, 0, 4;
+    %store/vec4 v0x563266bf61c0_0, 0, 4;
+    %delay 10000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x563266bf6390_0, 0, 1;
+    %pushi/vec4 5, 0, 4;
+    %store/vec4 v0x563266bf60e0_0, 0, 4;
+    %pushi/vec4 3, 0, 4;
+    %store/vec4 v0x563266bf61c0_0, 0, 4;
+    %delay 10000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x563266bf6390_0, 0, 1;
+    %pushi/vec4 8, 0, 4;
+    %store/vec4 v0x563266bf60e0_0, 0, 4;
+    %pushi/vec4 2, 0, 4;
+    %store/vec4 v0x563266bf61c0_0, 0, 4;
+    %delay 10000, 0;
+    %vpi_call 2 32 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+    .scope S_0x563266bde6a0;
+T_1 ;
+    %vpi_call 2 36 "$monitor", "%b    %b %b |   %b     %b", v0x563266bf6390_0, v0x563266bf60e0_0, v0x563266bf61c0_0, v0x563266bf6290_0, v0x563266bf6460_0 {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "adder_subtractor_tb.v";
+    "./adder_subtractor.v";

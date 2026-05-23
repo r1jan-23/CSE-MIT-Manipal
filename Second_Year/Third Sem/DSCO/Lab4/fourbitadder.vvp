@@ -1,0 +1,76 @@
+#! /usr/bin/vvp
+:ivl_version "12.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x5601f6d95c40 .scope module, "fourbitadder_tb" "fourbitadder_tb" 2 3;
+ .timescale -9 -12;
+v0x5601f6daabd0_0 .var "a", 3 0;
+v0x5601f6daacb0_0 .var "b", 3 0;
+v0x5601f6daad80_0 .net "carry", 0 0, L_0x5601f6daaf50;  1 drivers
+v0x5601f6daae80_0 .net "sum", 3 0, L_0x5601f6daaff0;  1 drivers
+S_0x5601f6d95dd0 .scope module, "fba" "fourbitadder" 2 9, 3 1 0, S_0x5601f6d95c40;
+ .timescale -9 -12;
+    .port_info 0 /INPUT 4 "a";
+    .port_info 1 /INPUT 4 "b";
+    .port_info 2 /OUTPUT 4 "sum";
+    .port_info 3 /OUTPUT 1 "carry";
+L_0x7f9a9c532060 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0x5601f6d5c170_0 .net *"_ivl_10", 0 0, L_0x7f9a9c532060;  1 drivers
+v0x5601f6daa410_0 .net *"_ivl_11", 4 0, L_0x5601f6dab3e0;  1 drivers
+v0x5601f6daa4f0_0 .net *"_ivl_3", 4 0, L_0x5601f6dab130;  1 drivers
+L_0x7f9a9c532018 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0x5601f6daa5e0_0 .net *"_ivl_6", 0 0, L_0x7f9a9c532018;  1 drivers
+v0x5601f6daa6c0_0 .net *"_ivl_7", 4 0, L_0x5601f6dab270;  1 drivers
+v0x5601f6daa7f0_0 .net "a", 3 0, v0x5601f6daabd0_0;  1 drivers
+v0x5601f6daa8d0_0 .net "b", 3 0, v0x5601f6daacb0_0;  1 drivers
+v0x5601f6daa9b0_0 .net "carry", 0 0, L_0x5601f6daaf50;  alias, 1 drivers
+v0x5601f6daaa70_0 .net "sum", 3 0, L_0x5601f6daaff0;  alias, 1 drivers
+L_0x5601f6daaf50 .part L_0x5601f6dab3e0, 4, 1;
+L_0x5601f6daaff0 .part L_0x5601f6dab3e0, 0, 4;
+L_0x5601f6dab130 .concat [ 4 1 0 0], v0x5601f6daabd0_0, L_0x7f9a9c532018;
+L_0x5601f6dab270 .concat [ 4 1 0 0], v0x5601f6daacb0_0, L_0x7f9a9c532060;
+L_0x5601f6dab3e0 .arith/sum 5, L_0x5601f6dab130, L_0x5601f6dab270;
+    .scope S_0x5601f6d95c40;
+T_0 ;
+    %vpi_call 2 17 "$dumpfile", "fourbitadder.vcd" {0 0 0};
+    %vpi_call 2 18 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x5601f6d95c40 {0 0 0};
+    %vpi_call 2 19 "$display", "A     B     | Carry Sum" {0 0 0};
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v0x5601f6daabd0_0, 0, 4;
+    %pushi/vec4 2, 0, 4;
+    %store/vec4 v0x5601f6daacb0_0, 0, 4;
+    %delay 10000, 0;
+    %pushi/vec4 5, 0, 4;
+    %store/vec4 v0x5601f6daabd0_0, 0, 4;
+    %pushi/vec4 3, 0, 4;
+    %store/vec4 v0x5601f6daacb0_0, 0, 4;
+    %delay 10000, 0;
+    %pushi/vec4 15, 0, 4;
+    %store/vec4 v0x5601f6daabd0_0, 0, 4;
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v0x5601f6daacb0_0, 0, 4;
+    %delay 10000, 0;
+    %pushi/vec4 10, 0, 4;
+    %store/vec4 v0x5601f6daabd0_0, 0, 4;
+    %pushi/vec4 5, 0, 4;
+    %store/vec4 v0x5601f6daacb0_0, 0, 4;
+    %delay 10000, 0;
+    %vpi_call 2 26 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+    .scope S_0x5601f6d95c40;
+T_1 ;
+    %vpi_call 2 30 "$monitor", "%b %b |   %b    %b", v0x5601f6daabd0_0, v0x5601f6daacb0_0, v0x5601f6daad80_0, v0x5601f6daae80_0 {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "fourbitadder_tb.v";
+    "./fourbitadder.v";
